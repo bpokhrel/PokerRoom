@@ -13,6 +13,9 @@ if (isset($_POST['register'])) {
             }
         }
     }
+    if(strlen($username)>9){
+        $errors['field_name']= ' username must be less than 9 charcters.';
+    }
     // Proceed only if there are no errors
     if (!$errors) {
         if ($pwd != $confirm) {
@@ -194,6 +197,8 @@ label[for=color] {
             echo $errors['username'];
         } elseif (isset($errors['failed'])) {
             echo $errors['failed'];
+        }elseif(isset($errors['field_name'])){
+            echo $errors['field_name'];
         }
         ?>
     </p>
